@@ -37,7 +37,7 @@ while(have_posts()){
         if($parentPage or $testArray) { ?>
 
       <div class="page-links">
-        <h2 class="page-links__title"><a href="<?php echo get_permalink($parentPage); ?>"><?php echo get_the_title(); ?></a></h2>
+        <h2 class="page-links__title"><a href="<?php echo get_permalink($parentPage); ?>"><?php echo get_the_title($parentPage); ?></a></h2>
         <ul class="min-list">
           <?php 
 
@@ -52,7 +52,8 @@ while(have_posts()){
           wp_list_pages( array(
 
             'title_li' => null,
-            'child_of' => $findChildrenOf
+            'child_of' => $findChildrenOf,
+            'sort_column' => 'menu_order'
 
           ));
 
