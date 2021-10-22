@@ -12,5 +12,11 @@ function samsung(){
 add_action('wp_enqueue_scripts','samsung'); 
 
 
+function wordpress_samsung(){
+	add_theme_support('title-tag');
+}
+add_action('after_setup_theme','wordpress_samsung'); 
+
+
 
 
