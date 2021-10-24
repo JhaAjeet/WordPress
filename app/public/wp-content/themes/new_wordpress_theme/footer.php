@@ -12,6 +12,17 @@
             <div class="site-footer__col-two">
               <h3 class="headline headline--small">Explore</h3>
               <nav class="nav-list">
+
+
+                 <!-- here is php code for dynamic for using correct php syntax -->
+               <!-- ?php 
+
+                wp_nav_menu(array(
+                  'theme_location' => 'footerLocationOne'
+                ));
+
+                ?> -->
+
                 <ul>
                   <li><a href="<?php echo site_url('/about-us') ?>">About Us</a></li>
                   <li><a href="#">Programs</a></li>
@@ -29,6 +40,17 @@
                   <li><a href="<?php echo site_url('/privacy-policy') ?>">Privacy</a></li>
                   <li><a href="#">Careers</a></li>
                 </ul>
+
+                 <!-- here is php code for dynamic for using this code correct php syntax -->
+
+           <!--?php 
+
+                wp_nav_menu(array(
+                  'theme_location' => 'footerLocationTwo'
+                ));
+
+                ?> -->
+
               </nav>
             </div>
           </div>
