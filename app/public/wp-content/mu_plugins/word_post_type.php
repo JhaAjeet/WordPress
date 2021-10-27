@@ -3,6 +3,7 @@
 
 	function wordpress_post_types(){
 	register_post_type('event',array(
+		'has_archive' => true,
 		'public' => true,
 		'labels' => array(
 			'name' => 'Events'
