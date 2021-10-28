@@ -25,9 +25,11 @@ add_action('after_setup_theme','wordpress_samsung');
 
 
 function wordpress_post_types(){
+	//event post Type
+
 	register_post_type('event',array(
 		'supports' => array('title','editor','excerpt','custom-fields'),
-		'show_in_list' => true,
+		'show_in_rest' => true,
 		'rewrite' => array('slug' => 'events'),
 
 		'has_archive' => true,
@@ -41,12 +43,43 @@ function wordpress_post_types(){
 		),
 		'menu_icon' => 'dashicons-calendar'
 	));
+
+
+// program post type 
+
+	register_post_type('program',array(
+		'supports' => array('title','editor'),
+		'show_in_rest' => true,
+		'rewrite' => array('slug' => 'Programs'),
+
+		'has_archive' => true,
+		'public' => true,
+		'labels' => array(
+			'name' => 'Programs',
+			'add_new_item' => 'Add New Program',
+			'edit_item' => 'Edit Program',
+			'all_items' => 'All Programs',
+			'singular_name' => 'Program'
+		),
+		'menu_icon' => 'dashicons-awards'
+	));
 }
+
+
+
 
 add_action('init','wordpress_post_types');
 
 
 function university_adjust_query($query){
+
+if(! is_admin() AND is_post_type_archive('program') AND $query->is_main_query()){
+	$query->set('orderby','title');
+	$query->set('order','ASC');
+	$query->set('posts_per_page',2);
+}
+
+
 if(! is_admin() AND is_post_type_archive('event') AND $query->is_main_query()){
 	$date = date('Ymd');
 	$query->set('meta_key','event_date');
