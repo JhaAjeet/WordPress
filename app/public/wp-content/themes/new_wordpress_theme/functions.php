@@ -26,6 +26,8 @@ add_action('after_setup_theme','wordpress_samsung');
 
 function wordpress_post_types(){
 	register_post_type('event',array(
+		'supports' => array('title','editor','excerpt'),
+		'show_in_list' => true,
 		'rewrite' => array('slug' => 'events'),
 
 		'has_archive' => true,
