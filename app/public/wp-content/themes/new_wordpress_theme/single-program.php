@@ -49,6 +49,10 @@ while(have_posts()){
             )
 
           ));
+         if ($homepageEvents->have_posts()) {
+            echo '<hr class="section-break">';
+          echo '<h2 class="headline headline--medium">Upcomming ' . get_the_title() .' Events<h2>';
+
           while($homepageEvents->have_posts()){
             $homepageEvents->the_post(); ?>
 
@@ -73,6 +77,7 @@ while(have_posts()){
           
           <?php }
 
+         }
 
            ?>
 
