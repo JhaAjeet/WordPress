@@ -63,7 +63,45 @@ function wordpress_post_types(){
 		),
 		'menu_icon' => 'dashicons-awards'
 	));
+
+	// professor post type 
+
+	register_post_type('professor',array(
+		'supports' => array('title','editor'),
+		'show_in_rest' => true,
+
+		'public' => true,
+		'labels' => array(
+			'name' => 'professors',
+			'add_new_item' => 'Add New professor',
+			'edit_item' => 'Edit professor',
+			'all_items' => 'All professors',
+			'singular_name' => 'professor'
+		),
+		'menu_icon' => 'dashicons-welcome-learn-more'
+	));
 }
+
+
+// Technologies post type 
+
+	register_post_type('Tech',array(
+		'supports' => array('title','editor'),
+		'show_in_rest' => true,
+		'rewrite' => array('slug' => 'Tech'),
+
+		'has_archive' => true,
+		'public' => true,
+		'labels' => array(
+			'name' => 'Techs',
+			'add_new_item' => 'Add New Tech',
+			'edit_item' => 'Edit Tech',
+			'all_items' => 'All Techs',
+			'singular_name' => 'Tech'
+		),
+		'menu_icon' => 'dashicons-awards'
+	));
+
 
 
 
@@ -74,6 +112,13 @@ add_action('init','wordpress_post_types');
 function university_adjust_query($query){
 
 if(! is_admin() AND is_post_type_archive('program') AND $query->is_main_query()){
+	$query->set('orderby','title');
+	$query->set('order','ASC');
+	$query->set('posts_per_page',2);
+}
+
+
+if(! is_admin() AND is_post_type_archive('Tech') AND $query->is_main_query()){
 	$query->set('orderby','title');
 	$query->set('order','ASC');
 	$query->set('posts_per_page',2);

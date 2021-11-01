@@ -19,7 +19,7 @@ while(have_posts()){
 
     	<div class="metabox metabox--position-up metabox--with-home-link">
         <p>
-          <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('program') ?>"><i class="fa fa-home" aria-hidden="true"></i>All Programs</a> <span class="metabox__main"><?php the_title(); ?></span>
+          <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('tech') ; ?>"><i class="fa fa-home" aria-hidden="true"></i>All Tech</a> <span class="metabox__main"><?php the_title(); ?></span>
         </p>
       </div> 
 
@@ -27,7 +27,7 @@ while(have_posts()){
 
       <?php 
 
-            $relatedprofessors = new WP_Query(array(
+            $relatedtech = new WP_Query(array(
             'posts_per_page' => -1,
             'post_type' => 'professor',
             
@@ -35,7 +35,7 @@ while(have_posts()){
             'ordered' => 'ASC',
             'meta_query' => array(
               array(
-                'key' =>'related_programs',
+                'key' =>'related_Techs',
                 'compare' =>'LIKE',
                 'value' => '"'.get_the_ID().'"'
               )
@@ -43,12 +43,12 @@ while(have_posts()){
             )
 
           ));
-         if ($relatedprofessors->have_posts()) {
+         if ($relatedtech->have_posts()) {
             echo '<hr class="section-break">';
           echo '<h2 class="headline headline--medium">Upcomming ' . get_the_title() .' Events<h2>';
 
-          while($relatedprofessors->have_posts()){
-            $relatedprofessors->the_post(); ?>
+          while($relatedtech->have_posts()){
+            $relatedtech->the_post(); ?>
 
             <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
           
@@ -74,11 +74,6 @@ while(have_posts()){
                 'compare' => '>=',
                 'value' => $date,
                 'type' => 'Numeric'
-              ),
-              array(
-                'key' =>'related_programs',
-                'compare' =>'LIKE',
-                'value' => '"'.get_the_ID().'"'
               )
               
             )
