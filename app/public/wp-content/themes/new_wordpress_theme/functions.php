@@ -22,6 +22,7 @@ function wordpress_samsung(){
 	add_theme_support('post-thumbnails');
 	add_image_size('professorLandscape',400,200,true);
 	add_image_size('professorPortrait',480,650,true);
+	add_image_size('pageBanner',1500,350,true);
 }
 add_action('after_setup_theme','wordpress_samsung'); 
 
