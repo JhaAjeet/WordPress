@@ -19,6 +19,9 @@ function wordpress_samsung(){
 	// register_nav_menu('footerLocationTwo','Footer Location Two');
 	
 	add_theme_support('title-tag');
+	add_theme_support('post-thumbnails');
+	add_image_size('professorLandscape',400,200,true);
+	add_image_size('professorPortrait',480,650,true);
 }
 add_action('after_setup_theme','wordpress_samsung'); 
 
@@ -48,7 +51,7 @@ function wordpress_post_types(){
 // program post type 
 
 	register_post_type('program',array(
-		'supports' => array('title','editor'),
+		'supports' => array('title','editor' ,'thumbnail'),
 		'show_in_rest' => true,
 		'rewrite' => array('slug' => 'Programs'),
 
@@ -67,7 +70,7 @@ function wordpress_post_types(){
 	// professor post type 
 
 	register_post_type('professor',array(
-		'supports' => array('title','editor'),
+		'supports' => array('title','editor','thumbnail'),
 		'show_in_rest' => true,
 
 		'public' => true,
@@ -86,7 +89,7 @@ function wordpress_post_types(){
 // Technologies post type 
 
 	register_post_type('Tech',array(
-		'supports' => array('title','editor'),
+		'supports' => array('title','editor','thumbnail'),
 		'show_in_rest' => true,
 		'rewrite' => array('slug' => 'Tech'),
 

@@ -23,7 +23,22 @@ while(have_posts()){
         </p>
       </div> 
 
-    	<div class="generic-content"><?php the_content(); ?></div>
+    	     <div class="generic-content">
+        <div class="row_group">
+          <div class="one-third">
+            <?php  the_post_thumbnail(); ?>
+          </div>
+          <div class="two-thirds">
+            <?php  the_content(); ?>
+          </div>
+        </div>
+        <div>
+          <?php
+          $progress = get_field('progress_condition'); 
+          echo $progress;
+         ?>
+       </div>
+      </div>
 
       <?php 
 
@@ -47,12 +62,18 @@ while(have_posts()){
             echo '<hr class="section-break">';
           echo '<h2 class="headline headline--medium">Upcomming ' . get_the_title() .' Events<h2>';
 
+          echo '<ul class="professor-cards">';
+
           while($relatedtech->have_posts()){
             $relatedtech->the_post(); ?>
 
-            <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+            <li class="professor-card__list-item"><a class="professor-card" href="<?php the_permalink(); ?>">
+              <img class="professor-card__image" src="<?php the_post_thumbnail_url() ?>">
+              <span class="professor-card__name" ><?php the_title();  ?></span>
+            </a></li>
           
           <?php }
+          echo '</ul>';
 
          }
          wp_reset_postdata();

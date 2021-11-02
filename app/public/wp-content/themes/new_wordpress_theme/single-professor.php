@@ -23,7 +23,16 @@ while(have_posts()){
         </p>
       </div> 
 
-    	<div class="generic-content"><?php the_content(); ?></div>
+    	<div class="generic-content">
+        <div class="row_group">
+          <div class="one_third">
+            <?php  the_post_thumbnail(); ?>
+          </div>
+          <div class="two_thirds">
+            <?php  the_content(); ?>
+          </div>
+        </div>
+      </div>
 
       <?php 
       $relatedProgram = get_field('related_programs');
